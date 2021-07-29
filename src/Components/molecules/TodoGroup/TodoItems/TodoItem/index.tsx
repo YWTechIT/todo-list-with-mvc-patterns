@@ -1,9 +1,13 @@
 import {Todo} from '../../../../../types';
 
-const TodoItem = ({ id, text, done }: Todo) => {
+interface TodoItemProps extends Todo {
+  onRemove: (id: string) => void;
+}
+
+const TodoItem = ({ id, text, done, onRemove }: TodoItemProps) => {
   return (
     <>
-      <li id={id}>
+      <li id={id} onClick={() => {onRemove(id)}}>
         <label >{text}</label>
       </li>
     </>
